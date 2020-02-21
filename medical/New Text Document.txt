@@ -1,0 +1,329 @@
+00<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-family: verdana;
+   
+ 
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+header{
+ background-color: black;
+ color: white; 
+ text-align: center; 
+ font-family: verdana;
+
+  background-image: url("header.jpeg");
+background-repeat: no-repeat;
+background-size: cover;   
+    
+}
+footer{
+  background-color: black;
+ color: white; 
+ text-align: center; 
+
+ height: 150px;
+ width: auto; 
+ background-image: url("header.jpeg");
+background-repeat: no-repeat;
+background-size: cover; 
+font-family: verdana; 
+    
+}
+section{
+    
+height: 950px;
+width: auto;
+background:#EAF4F0;
+text-align: center;  
+background-image: url("background.jpeg");
+background-repeat: no-repeat;
+background-size: cover;
+
+
+}
+input
+{
+
+width: 400px; 
+height: 50px;
+border-radius: 4px;
+box-sizing: border-box; 
+text-align: center; 
+color:rgb(0, 0, 0);
+font-family:sans-serif;
+font-size: 20px;
+border: ridge;
+
+}
+input[type=submit]
+{
+ 
+  background-color: blue;  
+  color: white;
+  height:65px;
+  width: 150px;
+  float: center;
+}
+h2{
+ color: white;
+
+ text-shadow: white;   
+}
+table
+{
+   font-family: cursive; 
+   border: 4px;
+   background-color:black;
+   text-align: center;
+   width: 930px;
+   height: 75px;
+   color: white;
+   
+}
+a
+{
+color: white;    
+      
+}
+div.form
+{
+
+background-color: aliceblue;
+margin-left: 260px;
+margin-right: 260px;
+background-image: url("form.png");
+background-repeat:unset;
+height: 890px;
+}
+
+div.top
+{
+background-color: black;
+font-family:Verdana;
+
+}
+select
+{
+text-align: right;    
+width: 400px; 
+height: 50px;
+border-radius: 4px;
+box-sizing: border-box; 
+color:rgb(0, 0, 0);
+font-family:sans-serif;
+font-size: 20px;
+border: ridge;
+text-indent:150px;
+}
+
+</style>
+</head>
+
+<body>
+
+<?php 
+require_once 'connect.php'
+?> 
+
+<br>
+<header>
+<br>
+<h2>Book Your Appointment</h2>
+<br>
+</header>
+<div>
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="about.html">About Us</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="form.html">Book Now</a></li>
+  <li><a href="login.html">View Appointment</a> </li>
+</ul>
+</div>
+
+<section>
+<br>
+<div class="form">
+<br>
+<div class="top">
+    <br>
+    <h3 style="color:white;">Appointment Form</h3>
+    <br>
+</div>
+
+<br>
+<form name="Form" onsubmit="return validateForm();" action="connect.php" method="POST">
+
+        <br>
+        <select  name="Title" id="Title">
+            <option class="t" value="">--Title--</option>
+            <option  value="Mr">Mr</option>
+            <option  value="Mrs">Mrs</option>
+            <option  value="Miss">Miss</option>
+          </select>
+          <br>
+
+<br><input type="text" name="FirstName"  placeholder="First Name" required="First Name"/><br>
+
+<br><input type="text" name="LastName"  placeholder="Last name" required/><br>
+
+<br><input type="text" name="IdNumber"  placeholder="Id Number" required/><br>
+
+<br>
+<select name="Gender"  id="Gender" required>
+    <option value="">--Gender--</option>
+    <option  value="Male">Male</option>
+    <option  value="Female">Female</option>
+    <option  value="Other">Other</option>
+  </select>
+  <br>
+
+<br><input type="text" name="PhoneNumber" placeholder="Phone Number" required/><br>
+
+<br><input type="text" name="Email"  placeholder="email@example.com" /><br>
+
+<br><input required type="text" name="AppoDate" placeholder="Appointment-Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}"><br>
+
+<br><input type="text" name="Description"  placeholder="Description" required/><br>
+
+<br><input type="submit" value="Book" placeholder="Book"/><br>
+</form>
+<br>
+<br>
+</div>
+<br>
+<br>
+</section>
+
+<footer>
+<br>
+<h3>copy rights 2019</h3>
+<br>
+</footer>
+</body>
+
+<script>
+
+ function validateForm() 
+ {
+//Surname
+var Lname=document.forms["Form"]["LastName"].value;
+if(!Lname.match(/^[a-zA-Z]*$/))
+{
+alert("Your Last name must contain letters of alphabets only.");
+
+return false;
+}
+
+//description
+var x=document.forms["Form"]["Description"].value;
+if(!x.match(/^[a-zA-Z ]*$/))
+{
+alert("Your description must contain letters of alphabets only.");
+
+return false;
+}
+//idnumber
+var Idno=document.forms["Form"]["IdNumber"].value;
+if(Idno.toString().length!=13)
+{
+alert("Please check your Id number length,it should be 13!");
+
+return false;
+}
+else 
+if(!Idno.match(/^[0-9]+$/))
+{
+alert("Id number field should be filled with number only");
+return false;   
+}
+//addtional
+var cit=Idno.slice(10,11);
+    if(cit!="0")
+    {
+    alert("your Id is invalid");
+    return false;   
+    }
+
+var cite=Idno.slice(11,12);
+    if(cite!="8")
+    {
+    alert("your Id is invalid");
+    return false;   
+    }  
+
+//email
+var x = document.forms["Form"]["Email"].value;
+  var atpos = x.indexOf("@");
+  var dotpos = x.lastIndexOf(".");
+  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+    alert("Not a valid e-mail address");
+    return false;
+  }
+//phone numbers
+var num=document.forms["Form"]["PhoneNumber"].value;
+if(num.substring(0,1)!="0")
+   {
+
+alert("Phone number should start with 0");
+return false;
+}
+if(!num.match(/^[0-9]+$/))
+{
+alert("Phone number field should be filled with number only");
+return false;   
+}
+if(!num.match(/^[0-9]+$/))
+{
+alert("Phone number field should be filled with number only");
+return false;   
+}  
+if(num.toString().length!=10)
+{
+alert("Phone number should be 10!");
+return false;   
+}
+//Gender
+if(document.getElementById("Gender").value=="")
+{
+    alert("Select Gender!!");
+    return false;
+}
+
+//Title
+if(document.getElementById("Title").value=="")
+{
+    document.getElementById("Title").focus();
+    alert("Select Title!!");
+    return false;
+}
+
+}
+</script>
+
+</html>

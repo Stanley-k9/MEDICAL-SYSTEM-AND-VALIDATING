@@ -1,0 +1,19 @@
+.reminder{
+	font-size: 53px;
+	text-decoration: none;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+	transition:0.6s ease ;
+	top : -10%;
+}
+	   
+.welcome{
+	font-size: 53px;
+	text-decoration: none;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+	transition:0.6s ease ;
+	top : -10%;
+	color :  rgb(48, 201, 163);;
+}
+	   
